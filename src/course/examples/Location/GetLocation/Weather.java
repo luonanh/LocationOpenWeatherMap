@@ -118,8 +118,8 @@ public class Weather {
 	}
 
 	public  class Rain {
-		private String time;
-		private float ammount;
+		private String time = null;
+		private float ammount = 0;
 		public String getTime() {
 			return time;
 		}

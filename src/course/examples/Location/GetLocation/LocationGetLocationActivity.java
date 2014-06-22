@@ -66,7 +66,7 @@ public class LocationGetLocationActivity extends Activity {
 		mLngView = (TextView) findViewById(R.id.lng_view);
 		mTimeStart = (TextView) findViewById(R.id.time_start);
 		mTimeEnd = (TextView) findViewById(R.id.time_end);
-		mWoeid = (TextView) findViewById(R.id.woeid);
+		mWoeid = (TextView) findViewById(R.id.temp);
 
 		// Acquire reference to the LocationManager
 		if (null == (mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE)))
@@ -127,14 +127,12 @@ public class LocationGetLocationActivity extends Activity {
 		};
 		
 		mWoeidDatabaseHelper = new WoeidDatabaseHelper(this.getApplicationContext());
-		mTimeStart.setText(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale
-				.getDefault()).format(new Date()));
-		mTimeEnd.setText(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale
+		mTimeStart.setText(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS", Locale
 				.getDefault()).format(new Date()));
 		WeatherServiceTask task = new WeatherServiceTask(new OpenWeatherMapProvider(), this);
 		task.execute(String.valueOf(mBestReading.getLatitude()), 
 				String.valueOf(mBestReading.getLongitude()));
-		mTimeEnd.setText(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale
+		mTimeEnd.setText(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.SSS", Locale
 				.getDefault()).format(new Date()));
 	}
 

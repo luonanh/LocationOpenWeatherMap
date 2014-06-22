@@ -25,7 +25,19 @@ public class WeatherServiceTask extends AsyncTask<String, Void, WeatherInfo>{
 
 	@Override
 	protected void onPostExecute(WeatherInfo result) {
-		TextView temp = (TextView) uiActivity.findViewById(R.id.woeid);
-		temp.setText(String.valueOf(result.getTempCurrent()));
+		TextView temp = (TextView) uiActivity.findViewById(R.id.temp);
+		temp.setText("Current Temperature: " + String.valueOf(result.getTempCurrent()));
+		TextView tempMax = (TextView) uiActivity.findViewById(R.id.tempMax);
+		tempMax.setText("Max Temperature: " + String.valueOf(result.getTempMax()));
+		TextView tempMin = (TextView) uiActivity.findViewById(R.id.tempMin);
+		tempMin.setText("Min Temperature: " + String.valueOf(result.getTempMin()));
+		TextView rain = (TextView) uiActivity.findViewById(R.id.rain);
+		if (result.isRain()) {
+			rain.setText("Rain today: " + "Yes");
+		} else {
+			rain.setText("Rain today: " + "No");
+		}
+		TextView windSpeed = (TextView) uiActivity.findViewById(R.id.windSpeed);
+		windSpeed.setText("Wind speed: " + String.valueOf(result.getWindSpeed()));
 	}
 }
