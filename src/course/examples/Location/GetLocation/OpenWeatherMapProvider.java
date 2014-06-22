@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-public class OpenWeatherMapProvider implements WeatherProvider {
+public class OpenWeatherMapProvider implements WeatherProviderInterface {
 	private final static String LOG_TAG = OpenWeatherMapProvider.class.getCanonicalName();
 	
 	public OpenWeatherMapProvider() {
@@ -61,8 +61,6 @@ public class OpenWeatherMapProvider implements WeatherProvider {
 		weather.clouds.setPerc(getInt("all", cObj));
 		
 		// We download the icon to show
-		
-		
 		return weather;
 	}
 
@@ -85,7 +83,7 @@ public class OpenWeatherMapProvider implements WeatherProvider {
 
 	@Override
 	public String getWeatherDataFromLatLong(double lat, double lon) {
-		return null;
+		return new WeatherHttpClient().getWeatherData(lat, lon);
 	}
 
 	@Override

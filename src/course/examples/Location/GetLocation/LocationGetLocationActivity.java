@@ -131,11 +131,6 @@ public class LocationGetLocationActivity extends Activity {
 				.getDefault()).format(new Date()));
 		mTimeEnd.setText(new SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale
 				.getDefault()).format(new Date()));
-		/*
-		int id = 4737979;
-		WoeidRecord wr = mWoeidDatabaseHelper.getWoeidByGeonameid(id);
-		mWoeid.setText(wr.getWoeid());
-		*/
 		WeatherServiceTask task = new WeatherServiceTask(new OpenWeatherMapProvider(), this);
 		task.execute(String.valueOf(mBestReading.getLatitude()), 
 				String.valueOf(mBestReading.getLongitude()));

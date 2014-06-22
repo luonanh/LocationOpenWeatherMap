@@ -5,10 +5,10 @@ import android.os.AsyncTask;
 import android.widget.TextView;
 
 public class WeatherServiceTask extends AsyncTask<String, Void, WeatherInfo>{
-	private WeatherProvider weatherProvider; // an interface can be swapped at run time
+	private WeatherProviderInterface weatherProvider; // an interface can be swapped at run time
 	private Activity uiActivity;
 	
-	public WeatherServiceTask(WeatherProvider wp, Activity uiThread) {
+	public WeatherServiceTask(WeatherProviderInterface wp, Activity uiThread) {
 		super();
 		weatherProvider = wp;
 		uiActivity = uiThread;
@@ -19,8 +19,8 @@ public class WeatherServiceTask extends AsyncTask<String, Void, WeatherInfo>{
 		double lat = Double.parseDouble(params[0]);
 		double lon = Double.parseDouble(params[1]);
 		String data = weatherProvider.getWeatherDataFromLatLong(lat, lon);
-		//return weatherProvider.getWeatherInfoFromWeatherData(data);
-		return weatherProvider.getWeatherInfoFromWeatherData(OpenWeatherMapMockFeed.rawText());
+		return weatherProvider.getWeatherInfoFromWeatherData(data);
+		// use mock return weatherProvider.getWeatherInfoFromWeatherData(OpenWeatherMapMockFeed.rawText());
 	}
 
 	@Override
